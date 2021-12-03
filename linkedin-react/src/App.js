@@ -1,23 +1,23 @@
 import './App.css';
 
-function Header(){
+function Header({name}){
   return(
     <header>
-      <h1>Eve's Kitchen</h1>
+      <h1>{name}'s Kitchen</h1>
     </header>
   )
 }
 
-function Main(){
+function Main({adj}){
   return(
-    <section>We make the best food around!</section>
+    <section>We make the most {adj} food around!</section>
   )
 }
 
-function Footer(){
+function Footer({year}){
   return(
     <footer>
-      <p>It's true.</p>
+      <p>Copyright {year}</p>
     </footer>
   )
 }
@@ -25,9 +25,9 @@ function Footer(){
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Main />
-      <Footer />
+      <Header name="Cindy"/>
+      <Main adj="amazing"/>
+      <Footer year={new Date().getFullYear()}/>
     </div>
   );
 }

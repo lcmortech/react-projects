@@ -5,18 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  React.createElement(
-    <ul>
-      <li>Monday</li>
-      <li>Tuesday</li>
-      <li>Wednesday</li>
-    </ul>
-    // "ul",
-    // null,
-    // React.createElement("li", null, "Monday"),
-    // React.createElement("li", null, "Tuesday"),
-    // React.createElement("li", null, "Wednesday")
-  ),
+  <React.StrictMode>
+  <App />
+  </React.StrictMode>,
     document.getElementById("root")
 );
 

@@ -3,18 +3,16 @@ import './App.css';
 import logo from './logo.svg'
 
 
-function App() {
-    const [emotion, setEmotion] = useState("happy");
-    
+function App() {    
+    const [checked, setChecked] = useState(false);
   return (
     <>
-        <h1>Current emotion is { emotion }.</h1>
-       <button onClick={()=> setEmotion('frustrated')}>
-       Frustrate</button>
-       <button onClick={()=> setEmotion('enthusiastic')}>
-       Enthuse</button>
-       <button onClick={()=> setEmotion('happy')}>
-       Happy</button>
+        <input 
+        type="checkbox" 
+        value={checked}
+        onChange={()=> setChecked(checked => !checked)}
+        />
+        <p>{checked ? 'checked' : 'not checked'}</p>
     </>
   );
 }

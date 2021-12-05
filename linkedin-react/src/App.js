@@ -1,50 +1,25 @@
 import './App.css';
 import logo from './logo.svg'
 
-function Header({name}){
-  return(
-    <header>
-      <h1>{name}'s Kitchen</h1>
-    </header>
-  )
+function SecretComponent(){
+    return(
+        <h1>Secret information for authorized users only</h1>
+    )
 }
 
-function Main({adj, dishes}){
-  return(
-
-    <section>
-      <p>We make the most {adj} food around!</p>
-      <img src={logo} height={200} alt="the react logo"/>
-      <ul style={{ listStyle: "none"}}>
-      {dishes.map((dish, i) => <li key={i}>{dish}</li>)}
-      </ul>
-    </section>
-  )
+function RegularComponent(){
+    return(
+        <h1>Public information for all users</h1>
+    )
 }
 
-function Footer({year}){
-  return(
-    <footer>
-      <p>Copyright {year}</p>
-    </footer>
-  )
-}
 
-const dishes = [
-  "Lamb Gyro",
-  "Spicy Tuna Roll",
-  "Bulgogi"
-];
 
-const dishObjects = dishes.map((dish, i)=> ({id: i, title: dish}))
-
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <Header name="Cindy"/>
-      <Main adj="amazing" dishes={dishes}/>
-      <Footer year={new Date().getFullYear()}/>
-    </div>
+      <>
+    {props.authorized ? <SecretComponent /> : <RegularComponent />}
+    </>
   );
 }
 

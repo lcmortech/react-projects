@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 // console.log(lights);
 
 ReactDOM.render(
-  <App />,
+  <App login="rg326" />,
     document.getElementById("root")
 );
 

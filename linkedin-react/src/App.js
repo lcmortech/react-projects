@@ -1,24 +1,20 @@
+import React, { useState } from "react";
 import './App.css';
 import logo from './logo.svg'
 
-function SecretComponent(){
-    return(
-        <h1>Secret information for authorized users only</h1>
-    )
-}
 
-function RegularComponent(){
-    return(
-        <h1>Public information for all users</h1>
-    )
-}
-
-
-
-function App(props) {
+function App() {
+    const [emotion, setEmotion] = useState("happy");
+    
   return (
-      <>
-    {props.authorized ? <SecretComponent /> : <RegularComponent />}
+    <>
+        <h1>Current emotion is { emotion }.</h1>
+       <button onClick={()=> setEmotion('frustrated')}>
+       Frustrate</button>
+       <button onClick={()=> setEmotion('enthusiastic')}>
+       Enthuse</button>
+       <button onClick={()=> setEmotion('happy')}>
+       Happy</button>
     </>
   );
 }

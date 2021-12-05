@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
+// const [,,lights] = ["boots", "tent", "headlamp"];
+// console.log(lights);
 
 ReactDOM.render(
-  <App authorized={false} />,
+  <App />,
     document.getElementById("root")
 );
 

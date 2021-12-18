@@ -1,6 +1,6 @@
-import {BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import HomePage from './components/Home.js';
+import HomePage from './components/HomePage.js';
 import About from './components/About.js';
 import Articles from './components/Articles.js';
 import ArticlesList from './components/ArticlesList.js';

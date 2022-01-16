@@ -21,3 +21,6 @@ app.listen(5000,()=>{
 //A static folder is usually named public or static, and usually contains all the assets
 //that remain unchanged by the server (ex: index.html, image files, style files, javascript files)
 //index.html can also be served using a template engine
+
+
+//fixing bug on app

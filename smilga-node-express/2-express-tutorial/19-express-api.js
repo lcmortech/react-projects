@@ -14,9 +14,8 @@ app.get('/api/products/1',(req, res)=>{
     res.json(newProducts)
 })
 
-app.get('/',(req, res)=>{
+app.get('/api/products/:productID',(req, res)=>{
     const singleProduct = products.find(product => product.id === 1)
-
     res.json(singleProduct)
 })
 

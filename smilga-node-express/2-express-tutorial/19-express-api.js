@@ -47,6 +47,10 @@ app.get('/api/v1/query', (req, res)=>{
         sortedProducts = sortedProducts.slice(0,Number(limit))
     }
 
+    if(sortedProducts.length < 1){
+        res.status(200).send('No products matched your search')
+    }
+
     res.status(200).json(sortedProducts)
     res.send('ello worl')
 })

@@ -32,6 +32,11 @@ app.get('/api/products/:productID/reviews/:reviewID',(req, res)=>{
     res.send('ello worl')
 })
 
+app.get('/api/v1/query', (req, res)=>{
+    console.log(req.query)
+    res.send('ello eorl')
+})
+
 
 app.listen(5000, ()=>{
     console.log('Server up and running on port 5000...')

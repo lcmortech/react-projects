@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express()
 const logger = require('./logger')
+const authorize = require('./authorize')
 
 //req => middleware => response
-app.use(logger) 
+app.use([logger, authorize]) 
 //auto invokes middleware for EVERY route
 //order matters, use must be at the top of the document, or else the get
 //requests will be invoked first

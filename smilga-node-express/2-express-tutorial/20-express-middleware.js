@@ -41,6 +41,7 @@ app.get('/api/products',logger, (req, res)=>{
 })
 
 app.get('/api/items',logger,(req, res)=>{
+    // console.log(req.user)
     res.send('Items')
 })
 

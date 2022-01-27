@@ -7,15 +7,21 @@ let {people} = require('./data')
 app.use(express.static('.methodss-public'))
 
 //parse form data
-app.use(express.urlencoded({extendd: false}))
+app.use(express.urlencoded({extended: false}))
 
 //the default method the browser performs
 app.get('/api/people',(req, res)=>{
     res.status(200).json({success:true, data:people})
 })
 
-app.post('/',(req, res)=>{
+app.post('/login',(req, res)=>{
+    console.log(req.body)
+    const {name} = req.body
+    if(name){
+        return res.status(200).send('Welcome')
+    } else {
     res.send('POST')
+    }
 })
 
 app.listen(5000, ()=>{

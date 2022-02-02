@@ -24,6 +24,15 @@ app.post('/login',(req, res)=>{
     }
 })
 
+app.post('api/postman/people'),(req, res)=>{
+    const {name} = req.body
+    if(!name){
+        return res
+        .status(400)
+        .json({ success: false, msg: 'please provide name value'})
+    }
+}
+
 app.listen(5000, ()=>{
     console.log('Server is running on port 5000...')
 })

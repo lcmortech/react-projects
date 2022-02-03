@@ -18,10 +18,10 @@ app.post('/login',(req, res)=>{
     console.log(req.body)
     const {name} = req.body
     if(name){
-        return res.status(200).send('Welcome')
-    } else {
-    res.send('POST')
-    }
+        return res.status(200).send(`Welcome ${name}`)
+    } 
+
+    res.status(401).send('Please Provide Credentials')
 })
 
 app.post('api/postman/people'),(req, res)=>{

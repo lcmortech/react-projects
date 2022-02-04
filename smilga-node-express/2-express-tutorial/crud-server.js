@@ -32,7 +32,7 @@ app.post('/api/postman/people',(req, res)=>{
         return res.status(400)
         .json({success: false, msg: 'please provide name value'})
     } else {
-        res.
+        res.status(201).json({success: true, data: [...people, name]})
     }
 })
 

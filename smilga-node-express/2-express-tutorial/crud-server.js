@@ -4,37 +4,13 @@ let {people} = require('./data')
 
 //remember app.use applies middleware to all our routes, and can also serve up a public/statis folder
 //static assets
-app.use(express.static('.methodss-public'))
+app.use(express.static('.methods-public'))
 
 //parse form data
 app.use(express.urlencoded({extended: false}))
 
 //parse json
 app.use(express.json())
-
-//the default method the browser performs
-app.get('/api/people',(req, res)=>{
-    res.status(200).json({success:true, data:people})
-})
-
-app.post('/api/people',(req, res)=>{
-    const {name} = req.body
-    if(!name){
-        return res.status(400).json({success: false, msg: 'please provide name value'})
-    }
-    res.status(201).json({success: true, person: name})
-    //res.status(201).send('Success')
-})
-
-app.post('/api/postman/people',(req, res)=>{
-    const {name} = req.body
-    if(!name) {
-        return res.status(400)
-        .json({success: false, msg: 'please provide name value'})
-    } else {
-        res.status(201).json({success: true, data: [...people, name]})
-    }
-})
 
 app.post('/login',(req, res)=>{
     console.log(req.body)
@@ -46,53 +22,7 @@ app.post('/login',(req, res)=>{
     res.status(401).send('Please Provide Credentials')
 })
 
-app.post('api/postman/people'),(req, res)=>{
-    const {name} = req.body
-    if(!name){
-        return res
-        .status(400)
-        .json({ success: false, msg: 'please provide name value'})
-    }
-    res.status(201).send({ success: true, data: [...people, name]})
-}
 
-app.put('/api/people/:id',(req, res)=>{
-    const { id } = req.params
-    const { name } = req.body
-
-    const person = people.find(person => person.id === Number(id))
-
-    if(!person) {
-        return res
-        .status(400)
-        .json({success: false, msg: `no person with id ${id}`})
-    }
-    const newPeople = people.map(person =>{
-        if(person.id === Number(id)) {
-            person.name = name
-        }
-        return person
-    })
-    res
-    .status(201)
-    .json({success: true, data: newPeople})
-})
-
-app.delete('/api/people',(req, res)=>{
-    const person = people.find(person => person.id === Number(req.params.id))
-
-    if(!person){
-        return res
-        .status(404)
-        .json({success: false, msg: `no person with id ${req.params.id}`})
-    }
-    const newPeople = people.filter(person => person.id !== Number(req.params.id))
-    return res
-    .status(200)
-    .json({success: true, data: newPeople})
-
-
-})
 
 app.listen(5000, ()=>{
     console.log('Server is running on port 5000...')

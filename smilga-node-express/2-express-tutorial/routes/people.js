@@ -1,13 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+let { people } = require('../data')
+
 
 //the default method the browser performs
-app.get('/api/people',(req, res)=>{
+app.get('/',(req, res)=>{
     res.status(200).json({success:true, data:people})
 })
 
-app.post('/api/people',(req, res)=>{
+app.post('/',(req, res)=>{
     const {name} = req.body
     if(!name){
         return res.status(400).json({success: false, msg: 'please provide name value'})
@@ -16,7 +18,7 @@ app.post('/api/people',(req, res)=>{
     //res.status(201).send('Success')
 })
 
-app.post('/api/postman/people',(req, res)=>{
+app.post('/people',(req, res)=>{
     const {name} = req.body
     if(!name) {
         return res.status(400)
@@ -28,7 +30,7 @@ app.post('/api/postman/people',(req, res)=>{
 
 
 
-app.post('api/postman/people'),(req, res)=>{
+app.post('/people'),(req, res)=>{
     const {name} = req.body
     if(!name){
         return res
@@ -38,7 +40,7 @@ app.post('api/postman/people'),(req, res)=>{
     res.status(201).send({ success: true, data: [...people, name]})
 }
 
-app.put('/api/people/:id',(req, res)=>{
+app.put('/:id',(req, res)=>{
     const { id } = req.params
     const { name } = req.body
 
@@ -60,7 +62,7 @@ app.put('/api/people/:id',(req, res)=>{
     .json({success: true, data: newPeople})
 })
 
-app.delete('/api/people',(req, res)=>{
+app.delete('/',(req, res)=>{
     const person = people.find(person => person.id === Number(req.params.id))
 
     if(!person){
@@ -75,3 +77,5 @@ app.delete('/api/people',(req, res)=>{
 
 
 })
+
+module.exports = router
